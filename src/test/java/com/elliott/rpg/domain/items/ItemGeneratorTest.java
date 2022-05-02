@@ -3,8 +3,6 @@ package com.elliott.rpg.domain.items;
 import com.elliott.rpg.domain.items.weapon.Weapon;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ItemGeneratorTest {

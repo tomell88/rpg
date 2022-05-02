@@ -4,10 +4,14 @@ import com.elliott.rpg.domain.items.ItemRarity;
 
 public class Sword implements Weapon {
 
-    private final int itemLevel;
-    private final double attackSpeed;
-    private final int attackDamage;
-    private final ItemRarity itemRarity;
+    private int itemLevel;
+    private double attackSpeed;
+    private int attackDamage;
+    private ItemRarity itemRarity;
+
+    public Sword() {
+
+    }
 
     public Sword(int itemLevel, double attackSpeed, int attackDamage, ItemRarity itemRarity) {
         this.itemLevel = itemLevel;

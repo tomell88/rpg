@@ -3,6 +3,7 @@ package com.elliott.rpg.domain;
 import com.elliott.rpg.domain.inventory.Inventory;
 import com.elliott.rpg.domain.items.Item;
 import com.elliott.rpg.domain.items.ItemType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ public class Player implements Entity {
 
     public Player(String name) {
         this.name = name;
+        this.inventory = new Inventory();
     }
 
     @Override
@@ -38,6 +40,7 @@ public class Player implements Entity {
     }
 
     @Override
+    @JsonIgnore
     public List<Item> getWeapon() {
         return getInventory().getItems()
                 .stream()
@@ -46,6 +49,7 @@ public class Player implements Entity {
     }
 
     @Override
+    @JsonIgnore
     public List<Item> getArmour() {
         return getInventory().getItems()
                 .stream()
