@@ -8,11 +8,11 @@ public class Game {
     private final EntityLocationMap entityLocationMap;
     private static Game INSTANCE;
 
-    private Game() {
+    private Game(String playerName) {
         this.gameMap = new GameMap();
         this.entityLocationMap = new EntityLocationMap();
 
-        Player player = new Player("Tom Elliott");
+        Player player = new Player(playerName);
 
         gameMap.insert(0,0,player.getId());
         entityLocationMap.addToEntityLocationMap(player.getId(), player);
@@ -20,9 +20,9 @@ public class Game {
         System.out.println("Created game for the first time");
     }
 
-    public static Game getGame() {
+    public static Game getOrCreateGame(String playerName) {
         if(INSTANCE == null) {
-            INSTANCE = new Game();
+            INSTANCE = new Game(playerName);
         }
         return INSTANCE;
     }

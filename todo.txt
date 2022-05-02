@@ -1,0 +1,13 @@
+To Do:
+
+Set up player inventory
+Allow inventory to be accessed via REST
+Create enemy representation
+Allow player to fight single enemy
+Allow player to get loot from defeated enemy
+
+Done:
+
+Basic tests for Game map
+Add basic item implementation
+Simple test for weapon damage
