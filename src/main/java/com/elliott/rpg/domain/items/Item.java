@@ -4,4 +4,6 @@ public interface Item {
 
     int getLevel();
 
+    ItemType getItemType();
+
 }

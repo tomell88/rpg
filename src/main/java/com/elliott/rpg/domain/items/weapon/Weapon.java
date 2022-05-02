@@ -1,6 +1,7 @@
 package com.elliott.rpg.domain.items.weapon;
 
 import com.elliott.rpg.domain.items.Item;
+import com.elliott.rpg.domain.items.ItemType;
 
 public interface Weapon extends Item {
 
@@ -9,4 +10,8 @@ public interface Weapon extends Item {
     int getAttackDamage();
 
     double getDamagePerSecond();
+
+    default ItemType getItemType() {
+        return ItemType.WEAPON;
+    }
 }
