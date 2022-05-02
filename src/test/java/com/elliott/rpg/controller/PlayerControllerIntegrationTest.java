@@ -30,42 +30,29 @@ public class PlayerControllerIntegrationTest {
     }
 
     @Test
-    public void testGetPlayer() {
-
-        try {
-            this.mockMvc.perform(MockMvcRequestBuilders.get("/player"))
-                    .andExpect(content().string(containsString(
-                            "{\"name\":\"Test Player\",\"inventory\":{\"items\":[]},\"id\":1}")))
-                    .andExpect(status().isOk());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void testGetPlayer() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/player"))
+                .andExpect(content().string(containsString(
+                        "{\"name\":\"Test Player\",\"inventory\":{\"items\":[]},\"id\":1}")))
+                .andExpect(status().isOk());
     }
 
     @Test
-    public void testGetPlayerInventory() {
+    public void testGetPlayerInventory() throws Exception {
 
-        try {
-            this.mockMvc.perform(MockMvcRequestBuilders.get("/player/inventory"))
-                    .andExpect(content().string(containsString("{\"items\":[]}")))
-                    .andExpect(status().isOk());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/player/inventory"))
+                .andExpect(content().string(containsString("{\"items\":[]}")))
+                .andExpect(status().isOk());
     }
 
     @Test
-    public void testAddItemToPlayerInventory() {
+    public void testAddItemToPlayerInventory() throws Exception {
 
         String item = "{\"attackSpeed\":1.2,\"attackDamage\":10,\"itemRarity\":\"NORMAL\"}";
-        try {
-            this.mockMvc.perform(MockMvcRequestBuilders.put("/player/inventory")
-                            .queryParam("itemJson", item))
-                    .andExpect(content().string(containsString("{\"items\":[{\"attackSpeed\":1.2,\"attackDamage\":10," +
-                            "\"itemRarity\":\"NORMAL\",\"level\":0,\"damagePerSecond\":12.0,\"itemType\":\"WEAPON\"}]}")))
-                    .andExpect(status().isOk());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/player/inventory")
+                        .queryParam("itemJson", item))
+                .andExpect(content().string(containsString("{\"items\":[{\"attackSpeed\":1.2,\"attackDamage\":10," +
+                        "\"itemRarity\":\"NORMAL\",\"level\":0,\"damagePerSecond\":12.0,\"itemType\":\"WEAPON\"}]}")))
+                .andExpect(status().isOk());
     }
 }
