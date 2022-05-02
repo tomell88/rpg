@@ -6,21 +6,27 @@ public class Game {
 
     private final GameMap gameMap;
     private final EntityLocationMap entityLocationMap;
-    private final Player player;
+    private static Game INSTANCE;
+    private Player player;
 
-    private Game(String playerName) {
+    private Game() {
         this.gameMap = new GameMap();
         this.entityLocationMap = new EntityLocationMap();
-        player = new Player(playerName);
+    }
+
+    public static Game getGame() {
+        if(INSTANCE == null) {
+            INSTANCE = new Game();
+        }
+
+        return INSTANCE;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
 
         gameMap.insert(0,0,player.getId());
         entityLocationMap.addToEntityLocationMap(player.getId(), player);
-
-        System.out.println("Created game for the first time");
-    }
-
-    public static Game getOrCreateGame(String playerName) {
-        return new Game(playerName);
     }
 
     public GameMap getGameMap() {

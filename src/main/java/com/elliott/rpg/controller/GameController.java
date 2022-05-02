@@ -11,7 +11,7 @@ public class GameController {
 
     @PostMapping("/newGame")
     public Game newGame() {
-        return Game.getOrCreateGame("Player One");
+        return Game.getGame();
     }
 
     @PutMapping("/update")

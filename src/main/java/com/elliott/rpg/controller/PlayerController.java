@@ -16,22 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlayerController {
 
     @GetMapping("/player")
-    public Player getPlayer(@RequestParam String playerName) {
-        return Game.getOrCreateGame(playerName).getPlayer();
+    public Player getPlayer() {
+        return Game.getGame().getPlayer();
     }
 
     @GetMapping("/player/inventory")
-    public Inventory getPlayerInventory(@RequestParam String playerName) {
-        return Game.getOrCreateGame(playerName).getPlayer().getInventory();
+    public Inventory getPlayerInventory() {
+        return Game.getGame().getPlayer().getInventory();
     }
 
     @PutMapping("/player/inventory")
-    public Inventory addItemToPlayerInventory(@RequestParam String playerName, @RequestParam String itemJson) throws JsonProcessingException {
+    public Inventory addItemToPlayerInventory(@RequestParam String itemJson) throws JsonProcessingException {
 
         ObjectMapper mapper = new ObjectMapper();
         Item item = mapper.readValue(itemJson, Sword.class);
 
-        Inventory inventory = Game.getOrCreateGame(playerName).getPlayer().getInventory();
+        Inventory inventory = Game.getGame().getPlayer().getInventory();
         inventory.addItem(item);
         return inventory;
     }

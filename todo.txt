@@ -4,6 +4,11 @@ Create enemy representation
 Allow player to fight single enemy
 Allow player to get loot from defeated enemy
 
+Improve the way games are modelled
+- fix user ID usage
+- don't key game on username
+- should game be a singleton?
+
 Done:
 
 Allow inventory to be accessed via REST

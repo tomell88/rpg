@@ -12,8 +12,4 @@ public interface Entity {
     String getName();
 
     Inventory getInventory();
-
-    List<Item> getWeapon();
-
-    List<Item> getArmour();
 }

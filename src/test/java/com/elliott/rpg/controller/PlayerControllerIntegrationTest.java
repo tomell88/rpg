@@ -1,6 +1,7 @@
 package com.elliott.rpg.controller;
 
 import com.elliott.rpg.core.Game;
+import com.elliott.rpg.domain.Player;
 import com.elliott.rpg.domain.inventory.Inventory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,14 @@ public class PlayerControllerIntegrationTest {
 
     @Test
     public void testGetPlayer() {
+
+        Game.getGame().setPlayer(new Player("Test Player"));
+
         try {
-            this.mockMvc.perform(MockMvcRequestBuilders.get("/player")
-                            .queryParam("playerName", "Test Player2"))
+            this.mockMvc.perform(MockMvcRequestBuilders.get("/player"))
                     .andDo(print())
                     .andExpect(content().string(containsString(
-                            "{\"name\":\"Test Player2\",\"inventory\":{\"items\":[]},\"id\":1}")))
+                            "{\"name\":\"Test Player\",\"inventory\":{\"items\":[]},\"id\":1}")))
                     .andExpect(status().isOk());
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,9 +40,11 @@ public class PlayerControllerIntegrationTest {
 
     @Test
     public void testGetPlayerInventory() {
+
+        Game.getGame().setPlayer(new Player("Test Player"));
+
         try {
-            this.mockMvc.perform(MockMvcRequestBuilders.get("/player/inventory")
-                            .queryParam("playerName", "Test Player3"))
+            this.mockMvc.perform(MockMvcRequestBuilders.get("/player/inventory"))
                     .andDo(print())
                     .andExpect(content().string(containsString("{\"items\":[]}")))
                     .andExpect(status().isOk());
@@ -51,10 +56,11 @@ public class PlayerControllerIntegrationTest {
     @Test
     public void testAddItemToPlayerInventory() {
 
+        Game.getGame().setPlayer(new Player("Test Player"));
+
         String item = "{\"attackSpeed\":1.2,\"attackDamage\":10,\"itemRarity\":\"NORMAL\"}";
         try {
             this.mockMvc.perform(MockMvcRequestBuilders.put("/player/inventory")
-                            .queryParam("playerName", "Test Player")
                             .queryParam("itemJson", item))
                     .andDo(print())
                     .andExpect(content().string(containsString("{\"items\":[{\"attackSpeed\":1.2,\"attackDamage\":10," +
@@ -65,6 +71,6 @@ public class PlayerControllerIntegrationTest {
         }
 
         //reset
-        Game.getOrCreateGame("Test Player").getPlayer().getInventory().empty();
+        Game.getGame().getPlayer().getInventory().empty();
     }
 }

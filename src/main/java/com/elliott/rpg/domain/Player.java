@@ -1,12 +1,6 @@
 package com.elliott.rpg.domain;
 
 import com.elliott.rpg.domain.inventory.Inventory;
-import com.elliott.rpg.domain.items.Item;
-import com.elliott.rpg.domain.items.ItemType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Player implements Entity {
 
@@ -34,25 +28,4 @@ public class Player implements Entity {
         return inventory;
     }
 
-    @Override
-    @JsonIgnore
-    public List<Item> getWeapon() {
-        return getInventory().getItems()
-                .stream()
-                .filter(item -> item.getItemType().equals(ItemType.WEAPON))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    @JsonIgnore
-    public List<Item> getArmour() {
-        return getInventory().getItems()
-                .stream()
-                .filter(item -> item.getItemType().equals(ItemType.ARMOUR))
-                .collect(Collectors.toList());
-    }
-
-    public void emptyInventory() {
-        inventory.empty();
-    }
 }

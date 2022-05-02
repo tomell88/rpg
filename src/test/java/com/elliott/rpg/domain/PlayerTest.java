@@ -1,6 +1,7 @@
 package com.elliott.rpg.domain;
 
 import com.elliott.rpg.domain.inventory.Inventory;
+import com.elliott.rpg.domain.inventory.InventoryFilter;
 import com.elliott.rpg.domain.items.ItemRarity;
 import com.elliott.rpg.domain.items.armour.LeatherArmour;
 import com.elliott.rpg.domain.items.weapon.Sword;
@@ -21,8 +22,8 @@ public class PlayerTest {
         player.getInventory().addItem(armour);
 
         assertEquals(2, player.getInventory().getItems().size());
-        assertEquals(sword, player.getWeapon().get(0));
-        assertEquals(armour, player.getArmour().get(0));
+        assertEquals(sword, InventoryFilter.getWeapon(player.getInventory()).get(0));
+        assertEquals(armour, InventoryFilter.getArmour(player.getInventory()).get(0));
     }
 
     @Test
@@ -39,8 +40,9 @@ public class PlayerTest {
         player.getInventory().addItem(armour);
 
         assertEquals(3, player.getInventory().getItems().size());
-        assertEquals(sword, player.getWeapon().get(0));
-        assertEquals(swordTwo, player.getWeapon().get(1));
-        assertEquals(armour, player.getArmour().get(0));
+
+        assertEquals(sword, InventoryFilter.getWeapon(player.getInventory()).get(0));
+        assertEquals(swordTwo, InventoryFilter.getWeapon(player.getInventory()).get(1));
+        assertEquals(armour, InventoryFilter.getArmour(player.getInventory()).get(0));
     }
 }
