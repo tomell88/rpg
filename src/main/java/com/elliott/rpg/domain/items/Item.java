@@ -6,4 +6,6 @@ public interface Item {
 
     ItemType getItemType();
 
+    ItemRarity getItemRarity();
+
 }

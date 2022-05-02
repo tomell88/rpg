@@ -1,5 +1,6 @@
 package com.elliott.rpg.domain.inventory;
 
+import com.elliott.rpg.domain.items.ItemRarity;
 import com.elliott.rpg.domain.items.armour.LeatherArmour;
 import com.elliott.rpg.domain.items.weapon.Sword;
 import org.junit.jupiter.api.Test;
@@ -12,8 +13,8 @@ public class InventoryTest {
     public void testAddItemToInventory() {
         Inventory inventory = new Inventory();
 
-        Sword sword = new Sword(1, 1.2, 10);
-        LeatherArmour armour = new LeatherArmour(1, 12);
+        Sword sword = new Sword(1, 1.2, 10, ItemRarity.NORMAL);
+        LeatherArmour armour = new LeatherArmour(1, 12, ItemRarity.NORMAL);
         inventory.addItem(sword);
         inventory.addItem(armour);
 

@@ -7,6 +7,8 @@ Allow player to get loot from defeated enemy
 
 Done:
 
+Add item rarity
+Add item generation
 Set up player inventory
 Basic tests for Game map
 Add basic item implementation
