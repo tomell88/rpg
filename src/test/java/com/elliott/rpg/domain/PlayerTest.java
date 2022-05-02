@@ -17,10 +17,8 @@ public class PlayerTest {
 
         Sword sword = new Sword(1, 1.2, 10, ItemRarity.NORMAL);
         LeatherArmour armour = new LeatherArmour(1, 12, ItemRarity.NORMAL);
-        inventory.addItem(sword);
-        inventory.addItem(armour);
-
-        player.setInventory(inventory);
+        player.getInventory().addItem(sword);
+        player.getInventory().addItem(armour);
 
         assertEquals(2, player.getInventory().getItems().size());
         assertEquals(sword, player.getWeapon().get(0));
@@ -35,11 +33,10 @@ public class PlayerTest {
         Sword sword = new Sword(1, 1.2, 10, ItemRarity.NORMAL);
         Sword swordTwo = new Sword(1, 1.2, 10, ItemRarity.NORMAL);
         LeatherArmour armour = new LeatherArmour(1, 12, ItemRarity.NORMAL);
-        inventory.addItem(sword);
-        inventory.addItem(swordTwo);
-        inventory.addItem(armour);
 
-        player.setInventory(inventory);
+        player.getInventory().addItem(sword);
+        player.getInventory().addItem(swordTwo);
+        player.getInventory().addItem(armour);
 
         assertEquals(3, player.getInventory().getItems().size());
         assertEquals(sword, player.getWeapon().get(0));

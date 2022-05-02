@@ -2,7 +2,6 @@ package com.elliott.rpg.controller;
 
 import com.elliott.rpg.core.Game;
 import com.elliott.rpg.domain.inventory.Inventory;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -29,7 +28,7 @@ public class PlayerControllerIntegrationTest {
                             .queryParam("playerName", "Test Player2"))
                     .andDo(print())
                     .andExpect(content().string(containsString(
-                            "{\"name\":\"Test Player\",\"inventory\":{\"items\":[]},\"id\":1}")))
+                            "{\"name\":\"Test Player2\",\"inventory\":{\"items\":[]},\"id\":1}")))
                     .andExpect(status().isOk());
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,6 +65,6 @@ public class PlayerControllerIntegrationTest {
         }
 
         //reset
-        Game.getOrCreateGame("Test Player").getPlayer().setInventory(new Inventory());
+        Game.getOrCreateGame("Test Player").getPlayer().getInventory().empty();
     }
 }

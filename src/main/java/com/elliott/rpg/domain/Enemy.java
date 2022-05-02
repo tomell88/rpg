@@ -8,25 +8,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Player implements Entity {
+public class Enemy implements Entity {
 
-    private static final int id = 1;
-    private final String name;
-    private final Inventory inventory;
+    private int id;
+    private String name;
+    private Inventory inventory;
 
-    public Player(String name) {
+    public Enemy(int id, String name, Inventory inventory) {
+        this.id = id;
         this.name = name;
-        this.inventory = new Inventory();
-    }
-
-    @Override
-    public String getName() {
-        return name;
+        this.inventory = inventory;
     }
 
     @Override
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -50,9 +51,5 @@ public class Player implements Entity {
                 .stream()
                 .filter(item -> item.getItemType().equals(ItemType.ARMOUR))
                 .collect(Collectors.toList());
-    }
-
-    public void emptyInventory() {
-        inventory.empty();
     }
 }

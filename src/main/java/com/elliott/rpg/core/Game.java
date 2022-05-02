@@ -4,7 +4,6 @@ import com.elliott.rpg.domain.Player;
 
 public class Game {
 
-    private static Game INSTANCE;
     private final GameMap gameMap;
     private final EntityLocationMap entityLocationMap;
     private final Player player;
@@ -21,10 +20,7 @@ public class Game {
     }
 
     public static Game getOrCreateGame(String playerName) {
-        if(INSTANCE == null) {
-            INSTANCE = new Game(playerName);
-        }
-        return INSTANCE;
+        return new Game(playerName);
     }
 
     public GameMap getGameMap() {

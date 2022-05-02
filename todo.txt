@@ -1,12 +1,12 @@
 To Do:
 
-Allow inventory to be accessed via REST
 Create enemy representation
 Allow player to fight single enemy
 Allow player to get loot from defeated enemy
 
 Done:
 
+Allow inventory to be accessed via REST
 Add item rarity
 Add item generation
 Set up player inventory

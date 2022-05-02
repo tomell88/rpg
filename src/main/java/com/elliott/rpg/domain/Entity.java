@@ -13,8 +13,6 @@ public interface Entity {
 
     Inventory getInventory();
 
-    void setInventory(Inventory inventory);
-
     List<Item> getWeapon();
 
     List<Item> getArmour();
